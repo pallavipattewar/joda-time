@@ -104,7 +104,7 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
 	
 	//csv code end
 	
-	       /* if(count > 0) {
+	        if(count > 0) {
 	         bat "mvn -Dsuite=PerformanceTests test"
                         post{
                             always{
@@ -121,7 +121,7 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
                                
                                   }
                             }
-            }*/
+            }
         		   
 	         
 	}
