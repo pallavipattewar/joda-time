@@ -52,7 +52,8 @@ def demo(){
     Random r = new Random()
     int n1 = r.nextInt(hashCode.size())
     println n1
-    int n2 = r.nextInt(hashCode.size())
+    //int n2 = r.nextInt(hashCode.size())
+	int n2 = n1+1
     println n2
     
     println "First hashcode"+hashCode[n1+1] 
@@ -103,7 +104,7 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
 	
 	//csv code end
 	
-	        if(count > 0) {
+	       /* if(count > 0) {
 	         bat "mvn -Dsuite=PerformanceTests test"
                         post{
                             always{
@@ -120,7 +121,7 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
                                
                                   }
                             }
-            }
+            }*/
         		   
 	         
 	}
