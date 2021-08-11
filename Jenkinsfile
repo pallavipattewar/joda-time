@@ -106,21 +106,21 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
 	
 	        if(count > 0) {
 	         bat "mvn -Dsuite=PerformanceTests test"
-                        post{
+                       /* post{
                             always{
                                 junit "**/ /*target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
                               
                                  }
-                            }	
+                            }	*/
 	        }
 	        else{
                 bat "mvn -Dsuite=FunctionalTests test"
-                        post{
+                      /*  post{
                             always{
                                 junit "**/ /*target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
                                
                                   }
-                            }
+                            }*/
             }
         		   
 	         
