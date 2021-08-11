@@ -99,7 +99,7 @@ if (!exists) {
 def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true).trim()
 
 //newFile.append("${a}, ${b} \n")
-	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${diffArray}\n")
+	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}\n")
   
 	
 	//csv code end
