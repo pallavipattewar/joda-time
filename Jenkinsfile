@@ -98,20 +98,20 @@ if (!exists) {
 }
 def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true).trim()
 
-//newFile.append("${a}, ${b} \n")
+	// for print code change category
 	def codeChangeCategory 
+	def testCaseType
 	if(count >= 1)
 	{
 		codeChangeCategory = "Memory Management"
-		println codeChangeCategory
+		testCaseType = "Performance Test"
 	}
 	else
 	{
 		codeChangeCategory = "Functional"
-		println codeChangeCategory
+		testCaseType = "Functional Test"
 	}
-	println "outer" +codeChangeCategory
-	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${codeChangeCategory}\n")
+	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${codeChangeCategory}, ${testCaseType}\n")
   
 	
 	//csv code end
