@@ -99,14 +99,15 @@ if (!exists) {
 def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true).trim()
 
 //newFile.append("${a}, ${b} \n")
+	def codeChangeCategory 
 	if(count >= 1)
 	{
-		def codeChangeCategory = "Memory Management"
+		codeChangeCategory = "Memory Management"
 		println codeChangeCategory
 	}
 	else
 	{
-		def codeChangeCategory = "Functional"
+		codeChangeCategory = "Functional"
 		println codeChangeCategory
 	}
 	println "outer" +codeChangeCategory
