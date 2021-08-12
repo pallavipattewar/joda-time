@@ -99,7 +99,15 @@ if (!exists) {
 def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true).trim()
 
 //newFile.append("${a}, ${b} \n")
-	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}\n")
+	if(count >= 1)
+	{
+		def codeChangeCategory = 'Memory Management'
+	}
+	else
+	{
+		def codeChangeCategory = 'Functional'
+	}
+	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${codeChangeCategory}\n")
   
 	
 	//csv code end
