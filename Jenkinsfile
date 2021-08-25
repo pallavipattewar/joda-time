@@ -59,10 +59,6 @@ def demo(){
     println "First hashcode"+hashCode[n1+1] 
     println "Second hashcode"+hashCode[n2+1]
 	
-	
-	def log = build.log
-	println log
-	
 
     def firstCommit = hashCode[n1+1]
     def secondCommit = hashCode[n2+1]
@@ -139,6 +135,10 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
                                   }
                             }*/
             }
+	
+	
+	def log = build.log
+	println log
         		   
 	         
 	}
