@@ -137,8 +137,8 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
             }
 	
 	
-	def log = build.log
-	println log
+	def build_id= bat (script: 'wget -qO- jenkins_url/job/job_name/lastSuccessfulBuild/buildNumber',returnStdout: true).trim()
+	println build_id
         		   
 	         
 	}
