@@ -37,7 +37,7 @@ def demo(){
     def firstCommit = hashCode[n1+1]
     def secondCommit = hashCode[n2+1]
 
-    def result = ~ bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
+    def result = bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
 
 	//def result = ~"(result1)"
     println(result)
@@ -83,7 +83,7 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
 		codeChangeCategory = "Functional"
 		testCaseType = "Functional Test"
 	}
-	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${result}, ${codeChangeCategory}, ${testCaseType}\n")
+	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ~ ${result}, ${codeChangeCategory}, ${testCaseType}\n")
 	//csv code end
 	
 	        if(count > 0) {
