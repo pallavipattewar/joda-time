@@ -38,12 +38,17 @@ def demo(){
     def secondCommit = hashCode[n2+1]
 
     def result = bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
-
+	
+	//String text = readFileAsString("textfile.txt");
+	
 	//def result = ~"(result1)"
     println(result)
 
     String diff = result.toString().toLowerCase()
     println diff
+	
+	String text = diff.replace("\n", "").replace("\r", "");
+
     String[] diffArray = null;
 	String[] keywords = ["Runtime", "New", "gc", "System"];
 	      
@@ -83,7 +88,7 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
 		codeChangeCategory = "Functional"
 		testCaseType = "Functional Test"
 	}
-	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${codeChangeCategory}, ${testCaseType}, ~ ${result}")
+	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${codeChangeCategory}, ${testCaseType}, ~ ${text}, ${text}")
 	//csv code end
 	
 	        if(count > 0) {
