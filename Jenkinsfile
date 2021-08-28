@@ -43,10 +43,13 @@ def demo(){
 	
 //	def result = bat (script: "git show $firstCommit | grep '^\\+'",returnStdout: true).trim()
 	
-	def result = bat (script: "git diff -u $firstCommit $secondCommit | grep -E '^\\+'",returnStdout: true).trim()//diff -u A1 A2 | grep -E "^\+"
+	def result1 = bat (script: "git diff -u $firstCommit $secondCommit | grep -E '^\\+'",returnStdout: true).trim()
+	
+	def result = bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
 	
 	
     println(result)
+	println(result1)
 
     String diff = result.toString().toLowerCase()
     println diff
