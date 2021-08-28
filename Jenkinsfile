@@ -41,7 +41,7 @@ def demo(){
 	
 	//def result = bat (script: "git diff --diff-filter=A $firstCommit $secondCommit",returnStdout: true).trim()
 	
-	def result = bat (script: "git show $firstCommit | grep '^\+'",returnStdout: true).trim()
+	def result = bat (script: "git show $firstCommit | grep '^\\+'",returnStdout: true).trim()
 	
 	
     println(result)
