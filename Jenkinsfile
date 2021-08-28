@@ -39,7 +39,7 @@ def demo(){
 
     //def result = bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
 	
-	def result = bat (script: "git diff --word-diff $firstCommit $secondCommit",returnStdout: true).trim()
+	def result = bat (script: "git diff --name-only $firstCommit $secondCommit",returnStdout: true).trim()
 	
 	
     println(result)
