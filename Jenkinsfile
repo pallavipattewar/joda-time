@@ -58,8 +58,8 @@ def demo(){
 	        }
 	
 //CSV code start
-    def newFile = new File("D:\\Test.txt")
-    def exists = fileExists 'D:\\Test.txt'
+    def newFile = new File("D:\\TestDemo.xml")
+    def exists = fileExists 'D:\\TestDemo.xml'
     //println exists
 
 if (!exists) {
@@ -81,7 +81,7 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
 		codeChangeCategory = "Functional"
 		testCaseType = "Functional Test"
 	}
-	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, 'diff', ${codeChangeCategory}, ${testCaseType}\n")
+	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${result}, ${codeChangeCategory}, ${testCaseType}\n")
 	//csv code end
 	
 	        if(count > 0) {
