@@ -37,7 +37,7 @@ def demo(){
     def firstCommit = hashCode[n1+1]
     def secondCommit = hashCode[n2+1]
 
-    def result = ~ "(bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim())"
+    def result = ~ "(bat (script: "git diff $firstCommit $secondCommit",returnStdout: true).trim())"
 
 	//def result = ~"(result1)"
     println(result)
