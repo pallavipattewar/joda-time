@@ -43,16 +43,15 @@ def demo(){
 	
 //	def result = bat (script: "git show $firstCommit | grep '^\\+'",returnStdout: true).trim()
 	
-	def result1 = bat (script: "git diff -u $firstCommit $secondCommit | grep -E '^\\+'",returnStdout: true).trim()
+	def result = bat (script: "git diff -u $firstCommit $secondCommit | grep -E '^\\+'",returnStdout: true).trim()
 	
-	def result = bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
+	def result1 = bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
 	
 	
     println(result)
 	println(result1)
 
     String diff = result.toString().toLowerCase()
-    println diff
 	
 	//String text = diff.replace("\n", "").replace("\r", "");
 	 //text = diff.replace(",", "").replace("\r", "");
@@ -70,8 +69,6 @@ def demo(){
 	        	}
 	        }
 	        }
-	
-
 	
 //CSV code start
     def newFile = new File("D:\\TestDemo.csv")
@@ -100,7 +97,7 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
 		testCaseType = "Functional Test"
 	}
 	//newFile_txt.append(result)
-	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${codeChangeCategory}, ${testCaseType}, ${result}")
+	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${codeChangeCategory}, ${testCaseType}, ~${result}")
 	//csv code end
 	
 	        if(count > 0) {
