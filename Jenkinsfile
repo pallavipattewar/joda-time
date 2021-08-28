@@ -38,7 +38,8 @@ def demo(){
     def secondCommit = hashCode[n2+1]
 
     //def result = bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
-	def result = bat (script: "@git diff --color=always|ruby -wne 'p $_' $firstCommit $secondCommit",returnStdout: true).trim()
+	
+	def result = bat (script: "git diff $firstCommit $secondCommit --stat",returnStdout: true).trim()
 	
 	
     println(result)
