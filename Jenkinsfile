@@ -37,7 +37,8 @@ def demo(){
     def firstCommit = hashCode[n1+1]
     def secondCommit = hashCode[n2+1]
 
-    def result = bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
+    def result1 = bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
+	def result = ~"(result1)"
     println(result)
 
     String diff = result.toString().toLowerCase()
@@ -58,8 +59,8 @@ def demo(){
 	        }
 	
 //CSV code start
-    def newFile = new File("D:\\TestDemo.txt")
-    def exists = fileExists 'D:\\TestDemo.txt'
+    def newFile = new File("D:\\TestDemo.csv")
+    def exists = fileExists 'D:\\TestDemo.csv'
     //println exists
 
 if (!exists) {
