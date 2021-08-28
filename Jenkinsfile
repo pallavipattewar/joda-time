@@ -48,7 +48,7 @@ def demo(){
     println diff
 	
 	String text = diff.replace("\n", "").replace("\r", "");
-
+	String text = diff.replace(",", "").replace("\r", "");
     String[] diffArray = null;
 	String[] keywords = ["Runtime", "New", "gc", "System"];
 	      
