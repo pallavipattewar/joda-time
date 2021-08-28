@@ -88,7 +88,7 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
 		codeChangeCategory = "Functional"
 		testCaseType = "Functional Test"
 	}
-	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${codeChangeCategory}, ${testCaseType}, ~ ${text}, ${text}")
+	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${codeChangeCategory}, ${testCaseType}, ${text}")
 	//csv code end
 	
 	        if(count > 0) {
