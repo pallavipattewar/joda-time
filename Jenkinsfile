@@ -58,8 +58,8 @@ def demo(){
 	        }
 	
 //CSV code start
-    def newFile = new File("D:\\TestDemo.xlsb")
-    def exists = fileExists 'D:\\TestDemo.xlsb'
+    def newFile = new File("D:\\TestDemo.txt")
+    def exists = fileExists 'D:\\TestDemo.txt'
     //println exists
 
 if (!exists) {
