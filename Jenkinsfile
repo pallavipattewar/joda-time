@@ -131,12 +131,12 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
                         post{
                             always{
                                 junit "**/ /*target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
-                               	//curl  ${BUILD_URL}/consoleText -OutFile D:\\SomeFile.txt
-				    ${BUILD_URL}/consoleText
+                               	
                                   }
                             }
             }
-	
+		String fileContents = new File('C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/Joda-Time-Github/target/surefire-reports/org.joda.time.TestAllPackages').text
+		println fileContents
 	
 		
         		   
