@@ -128,17 +128,17 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
 	        }
 	        else{
                 bat "mvn -Dsuite=FunctionalTests test"
-                      /*  post{
+                        post{
                             always{
                                 junit "**/ /*target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
-                               
+                               	//curl  ${BUILD_URL}/consoleText -OutFile D:\\SomeFile.txt
+				    ${BUILD_URL}/consoleText
                                   }
-                            }*/
+                            }
             }
 	
 	
-	def build_id= bat (script: 'wget -qO- jenkins_url/job/job_name/lastSuccessfulBuild/buildNumber',returnStdout: true).trim()
-	println build_id
+		
         		   
 	         
 	}
