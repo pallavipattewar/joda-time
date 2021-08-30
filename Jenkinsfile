@@ -62,6 +62,10 @@ def demo(){
 
     def firstCommit = hashCode[n1+1]
     def secondCommit = hashCode[n2+1]
+	
+	
+	String fileContents = new File("C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/Joda-Time-Github/target/surefire-reports/org.joda.time.TestAllPackages.txt")
+	println fileContents
 
  
 
@@ -131,8 +135,7 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
                         post{
                             always{
                                 junit "**/ /*target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
-				 String fileContents = new File("C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/Joda-Time-Github/target/surefire-reports/org.joda.time.TestAllPackages.txt")
-				println fileContents
+				 
                                	
                                   }
 				
