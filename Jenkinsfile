@@ -64,8 +64,8 @@ def demo(){
     def secondCommit = hashCode[n2+1]
 	
 	
-	String fileContents = new File("C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/Joda-Time-Github/target/surefire-reports/org.joda.time.TestAllPackages.txt")
-	println fileContents
+	//String fileContents = new File("C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/Joda-Time-Github/target/surefire-reports/org.joda.time.TestAllPackages.txt")
+	//println fileContents
 
  
 
