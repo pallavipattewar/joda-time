@@ -39,8 +39,8 @@ def demo(){
     println "First hashcode"+hashCode[n1+1] 
     println "Second hashcode"+hashCode[n2+1]
 
-    def firstCommit = hashCode[a+1]
-    def secondCommit = hashCode[b+1]
+    def firstCommit = hashCode[n1+1]
+    def secondCommit = hashCode[n2+1]
  
     // Get difference between two selected commits
 
