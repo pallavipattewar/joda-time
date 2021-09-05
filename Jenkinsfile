@@ -36,12 +36,6 @@ def demo(){
 
     def firstCommit = hashCode[n1+1]
     def secondCommit = hashCode[n2+1]
-
-    //def result = bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
-	
-	//def result = bat (script: "git diff --diff-filter=A $firstCommit $secondCommit",returnStdout: true).trim()
-	
-//	def result = bat (script: "git show $firstCommit | grep '^\\+'",returnStdout: true).trim()
 	
 	def result = bat (script: "git diff -u $firstCommit $secondCommit | grep -E '^\\+'",returnStdout: true).trim()
 	String repl = result.replaceAll("(\\r|\\n|\\r\\n|\\r|,)+", "\\\\n")
@@ -49,18 +43,11 @@ def demo(){
 	def result1 = bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
 	WritableCellFormat cellFormat = new WritableCellFormat();
 	cellFormat.setWrap(true);
-
-//sheet.addCell(new Label(1, 1, "A simple test message", cellFormat));    
-//sheet.addCell(new Label(1, 2, "An other text", cellFormat));
-	
 	
     println(repl)
 	println(result1)
 
     String diff = result.toString().toLowerCase()
-	
-	//String text = diff.replace("\n", "").replace("\r", "");
-	 //text = diff.replace(",", "").replace("\r", "");
     String[] diffArray = null;
 	String[] keywords = ["Runtime", "New", "gc", "System"];
 	      
