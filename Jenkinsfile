@@ -47,7 +47,11 @@ def demo(){
 	String repl = result.replaceAll("(\\r|\\n|\\r\\n|\\r|,)+", "\\\\n")
 	
 	def result1 = bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
-	
+	WritableCellFormat cellFormat = new WritableCellFormat();
+	cellFormat.setWrap(true);
+
+//sheet.addCell(new Label(1, 1, "A simple test message", cellFormat));    
+//sheet.addCell(new Label(1, 2, "An other text", cellFormat));
 	
 	
     println(repl)
@@ -99,7 +103,7 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
 		testCaseType = "Functional Test"
 	}
 	//newFile_txt.append(result)
-	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ~ ${repl}, ${codeChangeCategory}, ${testCaseType}")
+	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ~ ${repl}, ${codeChangeCategory}, ${testCaseType}", cellFormat)
 	//csv code end
 	
 	        if(count > 0) {
