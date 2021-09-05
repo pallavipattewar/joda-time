@@ -44,7 +44,7 @@ def demo(){
 //	def result = bat (script: "git show $firstCommit | grep '^\\+'",returnStdout: true).trim()
 	
 	def result = bat (script: "git diff -u $firstCommit $secondCommit | grep -E '^\\+'",returnStdout: true).trim()
-	String repl = result.replaceAll("(\\r|\\n|\\r\\n)+", "\\\\n")
+	String repl = result.replaceAll("(\\r|\\n|\\r\\n|\\r|,)+", "\\\\n")
 	
 	def result1 = bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
 	
