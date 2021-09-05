@@ -44,11 +44,13 @@ def demo(){
 //	def result = bat (script: "git show $firstCommit | grep '^\\+'",returnStdout: true).trim()
 	
 	def result = bat (script: "git diff -u $firstCommit $secondCommit | grep -E '^\\+'",returnStdout: true).trim()
+	String repl = result.replaceAll("(\\r|\\n|\\r\\n)+", "\\\\n")
 	
 	def result1 = bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
 	
 	
-    println(result)
+	
+    println(repl)
 	println(result1)
 
     String diff = result.toString().toLowerCase()
@@ -97,7 +99,7 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
 		testCaseType = "Functional Test"
 	}
 	//newFile_txt.append(result)
-	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${codeChangeCategory}, ${testCaseType}, ~ ${result}")
+	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${codeChangeCategory}, ${testCaseType}, ~ ${repl}")
 	//csv code end
 	
 	        if(count > 0) {
