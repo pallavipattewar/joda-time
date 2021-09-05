@@ -102,9 +102,14 @@ def demo(){
                             always{
                                 junit "**/ /*target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
                               
-				def summaryFile = new File("C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/Joda-Time-Github/target/surefire-reports/org.joda.time.TestAllPackages.txt");
-				def lines = summaryFile.readLines()
-				println lines
+				//def summaryFile = new File("C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/Joda-Time-Github/target/surefire-reports/org.joda.time.TestAllPackages.txt");
+				//def lines = summaryFile.readLines()
+				//println lines
+				    emailext body: ''
+    '${SCRIPT, template="groovy-html.template"}'
+    '',
+    subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Successful",
+      mimeType: 'text/html', to: "email list"
                                  }
 				
                             }	
@@ -116,9 +121,15 @@ def demo(){
                             always{
                                 junit "**/ /*target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
 				    
-                                def summaryFile = new File("C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/Joda-Time-Github/target/surefire-reports/org.joda.time.TestAllPackages.txt");
-				def lines = summaryFile.readLines()
-				println lines
+                               // def summaryFile = new File("C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/Joda-Time-Github/target/surefire-reports/org.joda.time.TestAllPackages.txt");
+				//def lines = summaryFile.readLines()
+				//println lines
+				    
+				    emailext body: ''
+    '${SCRIPT, template="groovy-html.template"}'
+    '',
+    subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Successful",
+      mimeType: 'text/html', to: "email list"
                                   }
 				
                             }
