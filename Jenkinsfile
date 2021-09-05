@@ -45,7 +45,7 @@ def demo(){
     // Get difference between two selected commits
 
     def result = bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
-    println(result)
+    println result
 
     String diff = result.toString().toLowerCase()
     String[] diffArray = null;
