@@ -1,4 +1,5 @@
 def name;
+def count =0
 pipeline {
     agent any
     stages {
@@ -11,7 +12,7 @@ pipeline {
         }
         stage('Testing Stage') {
 		steps {
-			def count =0
+			
 			
 		if(count > 0) {
 	         bat "mvn -Dsuite=PerformanceTests test"
