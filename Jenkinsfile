@@ -1,5 +1,5 @@
 def name;
-def count =0
+def count =1
 pipeline {
     agent any
     stages {
