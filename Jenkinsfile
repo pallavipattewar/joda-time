@@ -24,13 +24,14 @@ pipeline {
 					
 				}
 			}
-			post{
-                           		 always{
-                              			  junit "**/target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
-                        
-                                		 }
-                          		  }
+			
 		}
+		post{
+                          always{
+                              	junit "**/target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
+                        
+                                }
+                     }
 	}
     }
 }
