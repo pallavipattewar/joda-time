@@ -12,7 +12,7 @@ pipeline {
         stage('Testing Stage') {
 		steps {
 			
-	         bat "mvn -Dsuite=PerformanceTests test"
+	         bat "mvn -Dsuite=FunctionalTests test"
 		}
 			post{
                             always{
