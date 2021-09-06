@@ -11,6 +11,7 @@ pipeline {
         }
         stage('Testing Stage') {
 		steps {
+			script{
 			def count =0
 			
 		if(count > 0) {
@@ -20,6 +21,7 @@ pipeline {
 	        else{
                 bat "mvn -Dsuite=FunctionalTests test"
                 }
+		}
                           
             }
         }
