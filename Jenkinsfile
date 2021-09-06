@@ -33,6 +33,7 @@ pipeline {
                           
             }
 }
+}
 
 def demo(){
 
