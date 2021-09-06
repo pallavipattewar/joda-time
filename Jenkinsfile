@@ -30,7 +30,8 @@ pipeline {
     }
 	post{
              always{
-                                junit "**/ /*target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
+                                //junit "**/ /*target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
+		    		 junit "C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/Joda-Time-Github/target/surefire-reports/*.xml"
                                  }
 				
                             }	
