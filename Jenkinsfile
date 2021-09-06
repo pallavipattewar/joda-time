@@ -17,10 +17,24 @@ pipeline {
 			
 		if(count > 0) {
 	         bat "mvn -Dsuite=PerformanceTests test"
+		post{
+             always{
+                                junit "**/ /*target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
+		    		// junit "C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/Joda-Time-Github/target/surefire-reports/*.xml"
+                                 }
+				
+                            }
                         
 	        }
 	        else{
                 bat "mvn -Dsuite=FunctionalTests test"
+			post{
+             always{
+                                junit "**/ /*target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
+		    		// junit "C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/Joda-Time-Github/target/surefire-reports/*.xml"
+                                 }
+				
+                            }
                 }
 		
 		}
@@ -28,13 +42,7 @@ pipeline {
             }
         }
     }
-	post{
-             always{
-                                //junit "**/ /*target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
-		    		 junit "C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/Joda-Time-Github/target/surefire-reports/*.xml"
-                                 }
-				
-                            }	
+		
 	
 }
 
