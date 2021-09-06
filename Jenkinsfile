@@ -21,6 +21,7 @@ pipeline {
 	        else{
                 bat "mvn -Dsuite=FunctionalTests test"
                 }
+		demo()
 		}
                           
             }
@@ -32,7 +33,7 @@ pipeline {
                                  }
 				
                             }	
-	demo()
+	
 }
 
 def demo(){
