@@ -1,4 +1,5 @@
 def name;
+def count =0
 pipeline {
     agent any
     stages {
@@ -11,21 +12,31 @@ pipeline {
         }
         stage('Testing Stage') {
 		steps {
-			
-	         bat "mvn -Dsuite=FunctionalTests test"
-		}
-			post{
-                            always{
-                                junit "**/target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
+			script {
+				if(count > 0) 
+				{
+					bat "mvn -Dsuite=PerformanceTests test"
+					post{
+                           		 always{
+                               			 junit "**/target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
                         
-                                 }
-                            }
-
-		
+                                		 }
+                           		 }
+                   		 }
+				else
+				{
+					bat "mvn -Dsuite=FunctionalTests test"
+					post{
+                           		 always{
+                              			  junit "**/target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
+                        
+                                		 }
+                          		  }
+				}
+			}
 		}
-			
-                          
-            }
+	}
+    }
 }
 
 
