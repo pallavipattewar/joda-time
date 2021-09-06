@@ -13,6 +13,8 @@ pipeline {
         stage('Testing Stage') {
 		steps {
 			script {
+				demo()
+				
 				if(count > 0) 
 				{
 					bat "mvn -Dsuite=PerformanceTests test"
