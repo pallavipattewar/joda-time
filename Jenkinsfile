@@ -18,7 +18,6 @@ pipeline {
         }
     }
 }
-}
 
 def demo(){
 
