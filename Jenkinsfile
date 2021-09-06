@@ -107,7 +107,6 @@ def demo(){
 	        }
 	        else{
                 bat "mvn -Dsuite=FunctionalTests test"
-			println pqr
                         post{
                             always{
                                 junit "**/ /*target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
