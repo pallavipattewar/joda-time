@@ -4,30 +4,22 @@ pipeline {
     stages {
         stage('Build Stage') {
             steps {
-                script{
+                
                 bat "mvn -B -DskipTests clean package"
-                  }
+                  
             }
         }
         stage('Testing Stage') {
 		steps {
-			script{
-				demo()
 			def count =0
 			
 		if(count > 0) {
 	         bat "mvn -Dsuite=PerformanceTests test"
-		post{
-                            always{
-                                junit "**/target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
-                        
-                                 }
-                            }
-
-                        
-	        }
+		}
 	        else{
                 bat "mvn -Dsuite=FunctionalTests test"
+			
+                }
 			post{
                             always{
                                 junit "**/target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
@@ -35,17 +27,11 @@ pipeline {
                                  }
                             }
 
-                }
 		
 		}
 			
                           
             }
-		
-        }
-    }
-		
-	
 }
 
 def demo(){
