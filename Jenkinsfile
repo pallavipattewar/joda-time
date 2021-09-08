@@ -1,5 +1,5 @@
 def name;
-//def count =1
+def count =1
 pipeline {
     agent any
     stages {
@@ -113,7 +113,7 @@ def demo(){
 	}
 	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, 'Diff', ${codeChangeCategory}, ${testCaseType}\n")
   
-	return count
+	//return count
     //csv code end
 
 	      
