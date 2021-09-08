@@ -63,8 +63,10 @@ def demo(){
     def secondCommit = hashCode[n2+1]
  
     // Get difference between two selected commits
-
-        def result = bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
+	
+	def result = bat (script: "git diff -u $firstCommit $secondCommit | grep -E '^\\+'",returnStdout: true).trim()
+	String repl = result.replaceAll("(\\r|\\n|\\r\\n|\\r|,)+", "\\\\n")
+	
     println(result)
 
     String diff = result.toString().toLowerCase()
@@ -112,7 +114,9 @@ def demo(){
 		codeChangeCategory = "Functional"
 		testCaseType = "Functional Test"
 	}
-	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, 'Diff', ${codeChangeCategory}, ${testCaseType}\n")
+	
+	newFile.append("\n")
+	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${repl}, ${codeChangeCategory}, ${testCaseType}")
   
 	return count
     //csv code end
