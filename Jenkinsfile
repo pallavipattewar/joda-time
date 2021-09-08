@@ -84,6 +84,7 @@ def demo(){
 	        	}
 	        }
 	        }
+	println count
 
         //CSV code start
 	    def newFile = new File("D:\\Test.csv")
