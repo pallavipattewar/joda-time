@@ -72,7 +72,7 @@ def demo(){
     String[] diffArray = null;
 	String[] keywords = ["Runtime", "New", "gc", "System"];
 	      
-	int count =0;
+	int count =1;
 	         
 	        
 	        diffArray = diff.split(" ");
