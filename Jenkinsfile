@@ -1,5 +1,4 @@
 def name;
-//def count =1
 pipeline {
     agent any
     stages {
@@ -74,7 +73,7 @@ def demo(){
     String[] diffArray = null;
 	String[] keywords = ["Runtime", "New", "gc", "System"];
 	      
-	int count =1;
+	int count =0;
 	         
 	        
 	        diffArray = diff.split(" ");
