@@ -14,6 +14,7 @@ pipeline {
 		steps {
 			script {
 				def count = demo()
+				println "count above"+count
 				
 				if(count > 0) 
 				{
@@ -84,7 +85,7 @@ def demo(){
 	        	}
 	        }
 	        }
-	println count
+	println "below count"+count
 
         //CSV code start
 	    def newFile = new File("D:\\Test.csv")
