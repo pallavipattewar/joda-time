@@ -65,11 +65,11 @@ def selectCommits(){
 def commitDifference(){
  	
     // Get difference between two selected commits
-	String[] commits = selectCommits()
+	String[] commits = new selectCommits()
 	def firstCommit = commits[0]
 	def secondCommit = commits[1]
-	print "1111"firstCommit
-	print "2222"secondCommit
+	println "1111"firstCommit
+	println "2222"secondCommit
 	
 	def result = bat (script: "git diff -u $firstCommit $secondCommit | findstr /R /C:'^\\+'",returnStdout: true).trim()
 	String repl = result.replaceAll("(\\r|\\n|\\r\\n|\\r|,)+", "\\\\n")
