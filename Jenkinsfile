@@ -1,47 +1,42 @@
 def name;
 pipeline {
     agent any
-    stages {
-        stage('Build Stage') {
-            steps {
-                
-                bat "mvn -B -DskipTests clean package"
-                  
-            }
-        }
-        stage('Testing Stage') {
-		steps {
-			script {
-				def count = demo()
-				println "count above"+count
+    	stages {
+       		 stage('Build Stage') {
+          		 		steps {
+               					 bat "mvn -B -DskipTests clean package"
+                 			      }
+        			      }
+        	stage('Testing Stage') {
+					steps {
+						script {
+							def count = selectCommits()
+							println "count above"+count
 				
-				if(count > 0) 
-				{
-					bat "mvn -Dsuite=PerformanceTests test"
+							if(count > 0) 
+							{
+								bat "mvn -Dsuite=PerformanceTests test"
 					
-                   		 }
-				else
-				{
-					bat "mvn -Dsuite=FunctionalTests test"
-					
-				}
-			}
-			
-		}
-		post{
-                          always{
-                              	junit "**/target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
-                        
-                                }
-                     }
-	}
-    }
+                   		 			}
+							else
+							{
+							bat "mvn -Dsuite=FunctionalTests test"
+							}
+						      }
+						}
+						post{
+                         				always{
+                              					junit "**/target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
+                       					      }
+                     				    }
+						}
+   					 }
 }
 
 
-def demo(){
+def selectCommits(){
 
-    // Retrieve all the commits and choose 2 commit codes from it
+    // Retrieve all the commits and select 2 consecutive commit codes from it
 
     def commitCode = bat (script: 'git log --format=format:"%%H"', returnStdout: true).trim()
     String[] hashCode = null;
@@ -52,31 +47,46 @@ def demo(){
     Random r = new Random()
     int n1 = r.nextInt(hashCode.size())
     println n1
-    int n2 = n1+1
+    int n2 = n1-1
     println n2
     
     println "First hashcode"+hashCode[n1+1] 
     println "Second hashcode"+hashCode[n2+1]
 
-    def firstCommit = hashCode[n1+1]
-    def secondCommit = hashCode[n2+1]
- 
+	String[] selectedCommitArray = new String[2];
+	selectedCommitArray[0] = hashCode[n1+1];
+	println "1stcommitinarray"selectedCommitArray[0]
+	selectedCommitArray[1] = hashCode[n2+1];
+	println "2ndcommitinarray"selectedCommitArray[1]
+	return selectedCommitArray;
+	
+}
+
+def commitDifference{
+ 	
     // Get difference between two selected commits
+	String[] commits = selectCommits()
+	def firstCommit = commits[0]
+	def secondCommit = commits[1]
 	
 	def result = bat (script: "git diff -u $firstCommit $secondCommit | findstr /R /C:'^\\+'",returnStdout: true).trim()
 	String repl = result.replaceAll("(\\r|\\n|\\r\\n|\\r|,)+", "\\\\n")
 	
-    println(result)
+    println(rep1)
 
-    String diff = result.toString().toLowerCase()
+    String diff = rep1.toString().toLowerCase()
     println diff
-    String[] diffArray = null;
+	return diff
+}
+
+def matchKeywordCount {
+	String difference = commitDifference()
+    	String[] diffArray = null;
 	String[] keywords = ["Runtime", "New", "gc", "System"];
 	      
-	int count =0;
-	         
+	int count =0;  
 	        
-	        diffArray = diff.split(" ");
+	        diffArray = difference.split(" ");
 	        for(int i=0 ;i< diffArray.length ;i++) {
 	        	for(int j=0 ;j < keywords.length ; j++ )
 	        	{
@@ -84,12 +94,16 @@ def demo(){
 	        	{
 	        		count++;
 	        	}
-	        }
+	        	}
 	        }
 	println "below count"+count
+	return count
+}
 
+def createCSV{
+	
         //CSV code start
-	    def newFile = new File("D:\\Test.csv")
+	def newFile = new File("D:\\Test.csv")
         def exists = fileExists 'D:\\Test.csv'
         println exists
 
@@ -99,7 +113,15 @@ def demo(){
                     }
 
     def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true).trim()
-
+	
+	String[] commits = selectCommits()
+	def firstCommit = commits[0]
+	def secondCommit = commits[1]
+	
+	String difference = commitDifference()
+	
+	def count = matchKeywordCount()
+	
 	// for print code change category
 	def codeChangeCategory 
 	def testCaseType
@@ -115,9 +137,8 @@ def demo(){
 	}
 	
 	newFile.append("\n")
-	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${repl}, ${codeChangeCategory}, ${testCaseType}")
+	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${difference}, ${codeChangeCategory}, ${testCaseType}")
   
-	return count
     //csv code end
 
 	      
