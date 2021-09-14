@@ -73,14 +73,14 @@ def commitDifference(){
 	
 	//def result = bat (script: "git diff -u $firstCommit $secondCommit | grep -E '^\\+'",returnStdout: true).trim()
 	//def result = bat (script: "git diff -u $firstCommit $secondCommit | find /i /"+/"",returnStdout: true).trim()
-	def result = bat (script: "git diff -u $firstCommit $secondCommi",returnStdout: true).trim()
-	String repl = result.replaceAll("(\\r|\\n|\\r\\n|\\r|,)+", "\\\\n")
+	def result = bat (script: "git diff $firstCommit $secondCommi",returnStdout: true).trim()
+	//String repl = result.replaceAll("(\\r|\\n|\\r\\n|\\r|,)+", "\\\\n")
 	
-    println(rep1)
+    println(result)
 
-    String diff = rep1.toString().toLowerCase()
-    println diff
-	return diff
+   // String diff = rep1.toString().toLowerCase()
+   // println diff
+	//return diff
 }
 
 def matchKeywordCount() {
