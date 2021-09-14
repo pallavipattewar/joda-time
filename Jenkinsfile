@@ -93,7 +93,8 @@ def matchKeywordCount() {
 	        for(int i=0 ;i< diffArray.length ;i++) {
 	        	for(int j=0 ;j < keywords.length ; j++ )
 	        	{
-	        	 if(((diffArray[i].contains(keywords[j])) || (diffArray[i].startsWith(keywords[j])))
+	        	 //if(((diffArray[i].contains(keywords[j])) || (diffArray[i].startsWith(keywords[j])))
+			if((diffArray[i].contains(keywords[j])))
 	        	{
 	        		count++;
 	        	}
@@ -102,10 +103,11 @@ def matchKeywordCount() {
 	println "below count"+count
 	return count
 }
-
+			    
 def createCSV(){
 	
         //CSV code start
+	
 	def newFile = new File("D:\\Test.csv")
         def exists = fileExists 'D:\\Test.csv'
         println exists
