@@ -55,9 +55,9 @@ def selectCommits(){
 
 	String[] selectedCommitArray = new String[2];
 	selectedCommitArray[0] = hashCode[n1+1];
-	println "1stcommitinarray"selectedCommitArray[0]
+	println "1stcommitinarray"+selectedCommitArray[0]
 	selectedCommitArray[1] = hashCode[n2+1];
-	println "2ndcommitinarray"selectedCommitArray[1]
+	println "2ndcommitinarray"+selectedCommitArray[1]
 	return selectedCommitArray;
 	
 }
@@ -68,6 +68,8 @@ def commitDifference(){
 	String[] commits = selectCommits()
 	def firstCommit = commits[0]
 	def secondCommit = commits[1]
+	print firstCommit
+	print secondCommit
 	
 	def result = bat (script: "git diff -u $firstCommit $secondCommit | findstr /R /C:'^\\+'",returnStdout: true).trim()
 	String repl = result.replaceAll("(\\r|\\n|\\r\\n|\\r|,)+", "\\\\n")
