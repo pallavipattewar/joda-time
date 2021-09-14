@@ -10,7 +10,7 @@ pipeline {
         	stage('Testing Stage') {
 					steps {
 						script {
-							def count = selectCommits()
+							def count = matchKeywordCount()
 							println "count above"+count
 				
 							if(count > 0) 
@@ -68,8 +68,8 @@ def commitDifference(){
 	String[] commits = selectCommits()
 	def firstCommit = commits[0]
 	def secondCommit = commits[1]
-	print firstCommit
-	print secondCommit
+	print "1111"firstCommit
+	print "2222"secondCommit
 	
 	def result = bat (script: "git diff -u $firstCommit $secondCommit | findstr /R /C:'^\\+'",returnStdout: true).trim()
 	String repl = result.replaceAll("(\\r|\\n|\\r\\n|\\r|,)+", "\\\\n")
