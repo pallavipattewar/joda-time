@@ -65,7 +65,8 @@ def selectCommits(){
 def commitDifference(){
  	
     // Get difference between two selected commits
-	String[] commits = new selectCommits()
+	String[] commits = selectCommits()
+	println commits[]
 	def firstCommit = commits[0]
 	def secondCommit = commits[1]
 	println "1111"firstCommit
