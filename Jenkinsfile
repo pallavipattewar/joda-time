@@ -93,7 +93,7 @@ def matchKeywordCount() {
 	        for(int i=0 ;i< diffArray.length ;i++) {
 	        	for(int j=0 ;j < keywords.length ; j++ )
 	        	{
-	        	 if((diffArray[i].contains(keywords[j])))//|| (diffArray[i].startsWith(keywords[j])))
+	        	 if(((diffArray[i].contains(keywords[j])) || (diffArray[i].startsWith(keywords[j])))
 	        	{
 	        		count++;
 	        	}
