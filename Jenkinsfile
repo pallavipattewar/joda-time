@@ -73,7 +73,7 @@ def commitDifference(){
 	
 	//def result = bat (script: "git diff -u $firstCommit $secondCommit | grep -E '^\\+'",returnStdout: true).trim()
 	//def result = bat (script: "git diff -u $firstCommit $secondCommit | find /i /"+/"",returnStdout: true).trim()
-	def result = bat (script: "git diff -u $firstCommit $secondCommi",returnStdout: true).trim())
+	def result = bat (script: "git diff -u $firstCommit $secondCommi",returnStdout: true).trim()
 	String repl = result.replaceAll("(\\r|\\n|\\r\\n|\\r|,)+", "\\\\n")
 	
     println(rep1)
