@@ -62,7 +62,7 @@ def selectCommits(){
 	
 }
 
-def commitDifference{
+def commitDifference(){
  	
     // Get difference between two selected commits
 	String[] commits = selectCommits()
@@ -79,7 +79,7 @@ def commitDifference{
 	return diff
 }
 
-def matchKeywordCount {
+def matchKeywordCount() {
 	String difference = commitDifference()
     	String[] diffArray = null;
 	String[] keywords = ["Runtime", "New", "gc", "System"];
@@ -100,7 +100,7 @@ def matchKeywordCount {
 	return count
 }
 
-def createCSV{
+def createCSV(){
 	
         //CSV code start
 	def newFile = new File("D:\\Test.csv")
