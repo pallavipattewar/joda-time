@@ -52,6 +52,9 @@ def log(){
     {
         //Read and parse XML file and store it into a variable
 	    println "file exists"   
+	     println "ATT1 = ${XMLDATA.msg.tests[0].text()}"
+            println "ATT2 = ${XMLDATA.msg.errors[0].text()}"
+            println "ATT3 = ${XMLDATA.msg.failures[0].text()}"
    
 }
 }
