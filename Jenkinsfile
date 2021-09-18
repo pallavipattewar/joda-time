@@ -9,14 +9,33 @@ pipeline {
                   }
             }
         }
-        stage('Testing Stage') {
-            steps {
-                script{
-                  	demo()                   
-            }
-        }
+                stage('Testing Stage') {
+		steps {
+			script {
+				def count = demo()
+				println "count above"+count
+				
+				if(count > 0) 
+				{
+					bat "mvn -Dsuite=PerformanceTests test"
+					
+                   		 }
+				else
+				{
+					bat "mvn -Dsuite=FunctionalTests test"
+					
+				}
+			}
+			
+		}
+		post{
+                          always{
+                              	junit "**/target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
+                        
+                                }
+                     }
+	}
     }
-}
 }
 def demo(){
     def commitCode = bat (script: 'git log --format=format:"%%H"', returnStdout: true).trim()
@@ -87,23 +106,5 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
 	newFile.append("\n")
 	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${repl}, ${codeChangeCategory}, ${testCaseType}")
 	//csv code end
-	
-	       if(count > 0) {
-	         bat "mvn -Dsuite=PerformanceTests test"
-                       /* post{
-                            always{
-                                junit "**/ /*target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
-                              
-                                 }
-                            }	*/
-	        }
-	        else{
-                bat "mvn -Dsuite=FunctionalTests test"
-                      /*  post{
-                            always{
-                                junit "**/ /*target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
-                               
-                                  }
-                            }*/
-            }        
-	}
+	       
+}
