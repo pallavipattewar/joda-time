@@ -40,22 +40,18 @@ pipeline {
 }
 
 def log(){
-	
+	println "I am in log"
    // def inputFile = new File("C:\\Users\\Desktop\\New.xml")
     def inputFile = new File("C:\\Users\\palla\\.jenkins\\workspace\\JodaTime_Github\\target\\surefire-reports\\TEST-org.joda.time.TestAllPackages.xml")
     def XMLDATA  = new XmlParser().parse(inputFile)
     if(!inputFile.exists())
     {
-        //Display an alert if the file is not found.
-        alert.showInfoMessage("Input File 'New.xml' not found!");   
+       println "file not found"
     }
     else
     {
         //Read and parse XML file and store it into a variable
-	    
-    println "ATT1 = ${XMLDATA.msg.tests[0].text()}"
-    println "ATT2 = ${XMLDATA.msg.errors[0].text()}"
-    println "ATT3 = ${XMLDATA.msg.failures[0].text()}"
+	    println "file exists"   
    
 }
 }
