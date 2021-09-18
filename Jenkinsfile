@@ -40,8 +40,7 @@ pipeline {
 }
 
 def log(){
-	println "I am in log"
-   // def inputFile = new File("C:\\Users\\Desktop\\New.xml")
+	
     def inputFile = new File("C:\\Users\\palla\\.jenkins\\workspace\\JodaTime_Github\\target\\surefire-reports\\TEST-org.joda.time.TestAllPackages.xml")
     def XMLDATA  = new XmlParser().parse(inputFile)
     if(!inputFile.exists())
@@ -56,11 +55,7 @@ def log(){
 	    println "ATT1 = ${XMLDATA.attribute("errors")}"
 	     println "ATT1 = ${XMLDATA.attribute("failures")}"
 	     def newFile = new File("D:\\TestDemo.csv")
-	    newFile.append("${XMLDATA.attribute("tests")}, ${XMLDATA.attribute("errors")}, ${XMLDATA.attribute("failures")}")
-	    // println "ATT1 = ${XMLDATA.msg.tests[0].text()}"
-            //println "ATT2 = ${XMLDATA.msg.errors[0].text()}"
-            //println "ATT3 = ${XMLDATA.msg.failures[0].text()}"
-   
+	    newFile.append(",${XMLDATA.attribute("tests")}, ${XMLDATA.attribute("errors")}, ${XMLDATA.attribute("failures")}")
 }
 }
 def demo(){
