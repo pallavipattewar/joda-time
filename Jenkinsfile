@@ -31,11 +31,17 @@ pipeline {
 		post{
                           always{
                               	junit "**/target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
+				log()
                         
                                 }
                      }
 	}
     }
+}
+
+def log(){
+	
+	println "I am in log"
 }
 def demo(){
     def commitCode = bat (script: 'git log --format=format:"%%H"', returnStdout: true).trim()
