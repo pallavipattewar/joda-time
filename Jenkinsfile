@@ -59,7 +59,7 @@ def log(){
 	    println "total"+total
 	    def fail = XMLDATA.attribute("failures")
 	    println "fail"+fail
-	    def success = $($total - $fail)
+	    def success = (total - fail)
 	    println "success"+success
 	    
 	     def newFile = new File("D:\\TestDemo.csv")
