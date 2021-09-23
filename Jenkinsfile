@@ -55,11 +55,11 @@ def log(){
 	    println "ATT1 = ${XMLDATA.attribute("errors")}"
 	     println "ATT1 = ${XMLDATA.attribute("failures")}"
 	    
-	    def total= XMLDATA.attribute("tests")
+	    int total= XMLDATA.attribute("tests")
 	    println "total"+total
-	    def fail = XMLDATA.attribute("failures")
+	    int fail = XMLDATA.attribute("failures")
 	    println "fail"+fail
-	    def success = (total - fail)
+	    int success = (total - fail)
 	    println "success"+success
 	    
 	     def newFile = new File("D:\\TestDemo.csv")
