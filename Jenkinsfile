@@ -59,7 +59,8 @@ def log(){
 	    print totaltests
 	    def failedtests = XMLDATA.attribute("failures")
 	    print failedtests
-	    def successtests = totaltests - failedtests
+	    def successtests = ${totaltests} - ${failedtests}
+	    print successtests
 	   // newFile.append(",${XMLDATA.attribute("tests")}, ${XMLDATA.attribute("errors")}, ${XMLDATA.attribute("failures")}")
 	    
 	    newFile.append(",${totaltests}, ${successtests} , ${failedtests}")
