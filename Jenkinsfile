@@ -9,13 +9,53 @@ pipeline {
                   }
             }
         }
-        stage('Testing Stage') {
-            steps {
-                script{
-                  	demo()                   
-            }
-        }
+                stage('Testing Stage') {
+		steps {
+			script {
+				def count = demo()
+				println "count above"+count
+				
+				if(count > 0) 
+				{
+					bat "mvn -Dsuite=PerformanceTests test"
+					
+                   		 }
+				else
+				{
+					bat "mvn -Dsuite=FunctionalTests test"
+					
+				}
+			}
+			
+		}
+		post{
+                          always{
+                              	junit "**/target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
+				log()
+                        
+                                }
+                     }
+	}
     }
+}
+
+def log(){
+	
+    def inputFile = new File("C:\\Users\\palla\\.jenkins\\workspace\\JodaTime_Github\\target\\surefire-reports\\TEST-org.joda.time.TestAllPackages.xml")
+    def XMLDATA  = new XmlParser().parse(inputFile)
+    if(!inputFile.exists())
+    {
+       println "file not found"
+    }
+    else
+    {
+        //Read and parse XML file and store it into a variable
+	    println "file exists"  
+	    println "ATT1 = ${XMLDATA.attribute("tests")}"
+	    println "ATT1 = ${XMLDATA.attribute("errors")}"
+	     println "ATT1 = ${XMLDATA.attribute("failures")}"
+	     def newFile = new File("D:\\TestDemo.csv")
+	    newFile.append(",${XMLDATA.attribute("tests")}, ${XMLDATA.attribute("errors")}, ${XMLDATA.attribute("failures")}")
 }
 }
 def demo(){
@@ -48,7 +88,7 @@ def demo(){
     String diff = result.toString().toLowerCase()
     String[] diffArray = null;
     String[] keywords = ["Runtime", "New", "gc", "System"];
-    int count =0;
+    int count =5;
 	
 	        diffArray = diff.split(" ");
 	        for(int i=0 ;i< diffArray.length ;i++) {
@@ -87,23 +127,5 @@ def currentHashcode = bat (script: '@git log -1 --pretty=%%H',returnStdout: true
 	newFile.append("\n")
 	newFile.append("${currentHashcode}, ${firstCommit}, ${secondCommit}, ${repl}, ${codeChangeCategory}, ${testCaseType}")
 	//csv code end
-	
-	        if(count > 0) {
-	         bat "mvn -Dsuite=PerformanceTests test"
-                       /* post{
-                            always{
-                                junit "**/ /*target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
-                              
-                                 }
-                            }	*/
-	        }
-	        else{
-                bat "mvn -Dsuite=FunctionalTests test"
-                      /*  post{
-                            always{
-                                junit "**/ /*target/surefire-reports/TEST-org.joda.time.TestAllPackages.xml"
-                               
-                                  }
-                            }*/
-            }        
-	}
+	       return count
+}
