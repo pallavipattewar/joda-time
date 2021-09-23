@@ -54,16 +54,11 @@ def log(){
 	    println "ATT1 = ${XMLDATA.attribute("tests")}"
 	    println "ATT1 = ${XMLDATA.attribute("errors")}"
 	     println "ATT1 = ${XMLDATA.attribute("failures")}"
+	    println "ATT1 = ${XMLDATA.attribute("tests")}" - "ATT1 = ${XMLDATA.attribute("failures")}"
 	     def newFile = new File("D:\\TestDemo.csv")
-	     def totaltests = ${XMLDATA.attribute("tests")}
-	    print totaltests
-	    def failedtests = ${XMLDATA.attribute("failures")}
-	    print failedtests
-	    def successtests = ${totaltests} - ${failedtests}
-	    print successtests
-	   // newFile.append(",${XMLDATA.attribute("tests")}, ${XMLDATA.attribute("errors")}, ${XMLDATA.attribute("failures")}")
-	    
-	    newFile.append(",${totaltests}, ${successtests} , ${failedtests}")
+	     
+	    newFile.append(",${XMLDATA.attribute("tests")}, ${XMLDATA.attribute("errors")}, ${XMLDATA.attribute("failures")}")
+	   
 }
 }
 def demo(){
