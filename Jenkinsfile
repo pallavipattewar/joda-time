@@ -52,7 +52,6 @@ def log(){
         //Read and parse XML file and store it into a variable
 	    println "file exists"  
 	    println "ATT1 = ${XMLDATA.attribute("tests")}"
-	    println "ATT1 = ${XMLDATA.attribute("errors")}"
 	     println "ATT1 = ${XMLDATA.attribute("failures")}"
 	    
 	    int total= XMLDATA.attribute("tests")
@@ -64,7 +63,7 @@ def log(){
 	    
 	     def newFile = new File("D:\\TestDemo.csv")
 	     
-	    newFile.append(",${XMLDATA.attribute("tests")}, ${XMLDATA.attribute("errors")}, ${XMLDATA.attribute("failures")}")
+	    newFile.append(",${XMLDATA.attribute("tests")}, ${success}, ${XMLDATA.attribute("failures")}")
 	   
 }
 }
