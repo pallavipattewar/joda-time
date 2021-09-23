@@ -41,7 +41,7 @@ pipeline {
 
 def log(){
 	
-    def inputFile = new File("C:\\Users\\palla\\.jenkins\\workspace\\JodaTime_Github\\target\\surefire-reports\\TEST-org.joda.time.TestAllPackages.xml")
+    def inputFile = new File("C:\\Windows\\System32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\Joda-Time-Github\\target\\surefire-reports\\TEST-org.joda.time.TestAllPackages.xml")
     def XMLDATA  = new XmlParser().parse(inputFile)
     if(!inputFile.exists())
     {
@@ -80,10 +80,10 @@ def demo(){
 	def result = bat (script: "git diff -u $firstCommit $secondCommit",returnStdout: true).trim()
 	String repl = result.replaceAll("(\\r|\\n|\\r\\n|\\r|,)+", "\\\\n")
 	
-	def result1 = bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
+	//def result1 = bat (script: "@git diff $firstCommit $secondCommit",returnStdout: true).trim()
 	
     	println(repl)
-	println(result1)
+	//println(result1)
 
     String diff = result.toString().toLowerCase()
     String[] diffArray = null;
