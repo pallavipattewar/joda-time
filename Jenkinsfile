@@ -91,7 +91,7 @@ def demo(){
     int count =0;
 	
 	        diffArray = diff.split(" ");
-	        for(int i=0 ;i< diffArray.length ;i++) {
+	        for(int i=5 ;i< diffArray.length ;i++) {
 	        	for(int j=0 ;j < keywords.length ; j++ )
 	        	{
 	        	 if((diffArray[i].contains(keywords[j])))
