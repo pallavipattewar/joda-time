@@ -83,7 +83,9 @@ def demo(){
     def secondCommit = hashCode[n2+1]
 	
 	def result = bat (script: "git diff -a -m $firstCommit $secondCommit",returnStdout: true).trim()
+	println result
 	String repl = result.replaceAll("(\\r|\\n|\\r\\n|\\r|,)+", "\\\\n")
+	println repl
 	
 
     String diff = result.toString().toLowerCase()
