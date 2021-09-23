@@ -55,9 +55,9 @@ def log(){
 	    println "ATT1 = ${XMLDATA.attribute("errors")}"
 	     println "ATT1 = ${XMLDATA.attribute("failures")}"
 	     def newFile = new File("D:\\TestDemo.csv")
-	     def totaltests = XMLDATA.attribute("tests")
+	     def totaltests = ${XMLDATA.attribute("tests")}
 	    print totaltests
-	    def failedtests = XMLDATA.attribute("failures")
+	    def failedtests = ${XMLDATA.attribute("failures")}
 	    print failedtests
 	    def successtests = ${totaltests} - ${failedtests}
 	    print successtests
