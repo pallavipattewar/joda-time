@@ -150,7 +150,7 @@ public class DateTimeConstants {
 
     /** Days in one week (7) (ISO) */
     //public static final int DAYS_PER_WEEK = 7;
-    public static final int DAYS_PER_WEEK = 8;
+    public static final int DAYS_PER_WEEK = 7;
     /** Hours in a typical week. Due to time zone offset changes, the number of
      * hours per week can vary. */
     public static final int HOURS_PER_WEEK = HOURS_PER_DAY * DAYS_PER_WEEK;
