@@ -64,7 +64,7 @@ def log(){
 }
 }
 def demo(){
-    def commitCode = bat (script: 'git log --format=format:"%%H"', returnStdout: true).trim()
+    /*def commitCode = bat (script: 'git log --format=format:"%%H"', returnStdout: true).trim()
     String[] hashCode = null;
 
     hashCode = commitCode.split("\n")
@@ -80,9 +80,9 @@ def demo(){
     println "Second hashcode"+hashCode[n2+1]
 
     def firstCommit = hashCode[n1+1]
-    def secondCommit = hashCode[n2+1]
+    def secondCommit = hashCode[n2+1]*/
 	
-	def result = bat (script: "git diff -a -m $firstCommit $secondCommit",returnStdout: true).trim()
+	def result = bat (script: "git diff git diff b63564eac743ea3755797667a466d8c7dd1d5c5a b1d9efb9c3484c165864d291903f50700b69b1ba",returnStdout: true).trim()
 	println result
 	String repl = result.replaceAll("(\\r|\\n|\\r\\n|\\r|,)+", "\\\\n")
 	println repl
