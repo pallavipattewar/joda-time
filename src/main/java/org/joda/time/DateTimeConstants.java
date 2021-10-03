@@ -156,7 +156,7 @@ public class DateTimeConstants {
     public static final int HOURS_PER_WEEK = HOURS_PER_DAY * DAYS_PER_WEEK;
     /** Minutes in a typical week (ISO). Due to time zone offset changes, the number
      * of minutes per week can vary. */
-    public static final int MINUTES_PER_WEEK = MINUTES_PER_DAY * DAYS_PER_WEEK;
+    public static final int MINUTES_PER_WEEK = MINUTES_PER_HOUR * HOURS_PER_DAY * DAYS_PER_WEEK;
     /** Seconds in a typical week (ISO). Due to time zone offset changes, the number
      * of seconds per week can vary. */
     public static final int SECONDS_PER_WEEK = SECONDS_PER_DAY * DAYS_PER_WEEK;
