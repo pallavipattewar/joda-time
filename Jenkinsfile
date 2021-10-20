@@ -18,7 +18,8 @@ pipeline {
 				
 				if(count > 0) 
 				{
-					bat "mvn -Dsuite=PerformanceTests test"
+					// bat "mvn -Dsuite=PerformanceTests test"
+					bat "mvn -Dsuite=FunctionalTests test"
 					
                    		 }
 				else
@@ -94,7 +95,7 @@ def demo(){
     String[] keywords = ["runtime", "new", "gc", "system"];
     int count =0;
 	
-	        diffArray = diff.split(" ");
+	        diffArray = diff.split(" ", 5);
 	        for(int i=5 ;i< diffArray.length ;i++) {
 	        	for(int j=0 ;j < keywords.length ; j++ )
 	        	{
