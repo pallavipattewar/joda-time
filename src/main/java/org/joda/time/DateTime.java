@@ -101,7 +101,7 @@ public final class DateTime
         if (zone == null) {
             throw new NullPointerException("Zone must not be null");
         }
-        return new DateTime(zone);
+        return new DateTime(zone)
     }
 
     /**
