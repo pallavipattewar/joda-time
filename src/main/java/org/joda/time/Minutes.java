@@ -222,7 +222,10 @@ public final class Minutes extends BaseSingleFieldPeriod {
      *
      * @return the period type
      */
-
+    
+        public PeriodType getPeriodType() {
+        return PeriodType.minutes();
+    }
 
     //-----------------------------------------------------------------------
     /**
