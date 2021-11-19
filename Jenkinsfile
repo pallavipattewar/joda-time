@@ -83,7 +83,7 @@ def demo(){
     def firstCommit = hashCode[n1+1]
     def secondCommit = hashCode[n2+1]*/
 	
-	def result = bat (script: "git diff 5d8abb5f2d2228cb4cf930ff2a8cfc0200e94d2b a6b28bd923493c03422502ce3535e4cab2496c1b",returnStdout: true).trim()
+	def result = bat (script: "git diff -a -m 5d8abb5f2d2228cb4cf930ff2a8cfc0200e94d2b a6b28bd923493c03422502ce3535e4cab2496c1b",returnStdout: true).trim()
 	println result
 	String repl = result.replaceAll("(\\r|\\n|\\r\\n|\\r|,)+", "\\\\n")
 	println repl
