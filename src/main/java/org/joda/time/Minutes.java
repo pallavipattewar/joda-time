@@ -319,6 +319,10 @@ public final class Minutes extends BaseSingleFieldPeriod {
      *
      * @return the number of minutes in the period
      */
+    //public int getMinutes() {
+     //   return getValue();
+    //}
+    
     public int getMinutes() {
         return getValue();
     }
